@@ -78,7 +78,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.Holder> 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setCancelable(true);
             builder.setTitle("Warning");
-            builder.setMessage("Do you want to Delete Student");
+            builder.setMessage("Choose your Action please?");
             builder.setPositiveButton("Update Student", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

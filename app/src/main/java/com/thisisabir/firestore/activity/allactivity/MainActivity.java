@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,12 +26,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText studentname, studentdepartment, studentbatch;
     private Button savedata, viewdata;
+    private ProgressBar progressBar;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressBar = findViewById(R.id.progressbar);
         studentname = findViewById(R.id.name);
         studentdepartment = findViewById(R.id.department);
         studentbatch = findViewById(R.id.batch);
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.save)
         {
             savedata();
+            progressBar.setVisibility(View.VISIBLE);
         }
         if (v.getId() == R.id.viewdata)
         {
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onSuccess(DocumentReference documentReference) {
 
                 Toast.makeText(getApplicationContext(), "Student Information Inserted Successfully",Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
                 studentname.setText("");
                 studentdepartment.setText("");
                 studentbatch.setText("");

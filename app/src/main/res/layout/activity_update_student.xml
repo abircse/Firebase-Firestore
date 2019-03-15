@@ -26,6 +26,14 @@
         android:layout_height="wrap_content"
         android:hint="Batch" />
 
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="30dp"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_height="30dp"/>
+
     <Button
         android:id="@+id/update"
         android:layout_width="match_parent"

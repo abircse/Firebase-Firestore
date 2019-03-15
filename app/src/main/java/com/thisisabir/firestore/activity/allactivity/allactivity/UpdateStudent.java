@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,6 +21,7 @@ public class UpdateStudent extends AppCompatActivity implements View.OnClickList
 
     private EditText studentname, studentdepartment, studentbatch;
     private Button updatedata;
+    private ProgressBar progressBar;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private StudentPojo studentPojo;
 
@@ -27,7 +29,7 @@ public class UpdateStudent extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_student);
-
+        progressBar = findViewById(R.id.progressbar);
         studentPojo = (StudentPojo) getIntent().getSerializableExtra("alldata");
         studentname = findViewById(R.id.name);
         studentdepartment = findViewById(R.id.department);
@@ -45,6 +47,7 @@ public class UpdateStudent extends AppCompatActivity implements View.OnClickList
 
         if (v.getId() == R.id.update) {
             update();
+            progressBar.setVisibility(View.VISIBLE);
         }
     }
 
@@ -62,6 +65,7 @@ public class UpdateStudent extends AppCompatActivity implements View.OnClickList
 //                    public void onSuccess(Void aVoid) {
 //
 //                        Toast.makeText(getApplicationContext(), "Student Information Updated",Toast.LENGTH_LONG).show();
+//                        progressBar.setVisibility(View.GONE);
 //                        startActivity(new Intent(UpdateStudent.this, StudentList.class));
 //
 //                    }
@@ -85,6 +89,7 @@ public class UpdateStudent extends AppCompatActivity implements View.OnClickList
                     public void onSuccess(Void aVoid) {
 
                         Toast.makeText(getApplicationContext(), "Student Information Updated",Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
                         startActivity(new Intent(UpdateStudent.this, StudentList.class));
 
                     }
