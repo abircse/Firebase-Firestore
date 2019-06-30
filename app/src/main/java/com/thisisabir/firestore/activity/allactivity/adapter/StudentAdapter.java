@@ -103,7 +103,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.Holder> 
                                     if (task.isSuccessful())
                                     {
                                         Toast.makeText(context, "Student Deleted Succefully",Toast.LENGTH_LONG).show();
-                                        context.startActivity(new Intent(context,StudentList.class));
                                     }
                                 }
                             });

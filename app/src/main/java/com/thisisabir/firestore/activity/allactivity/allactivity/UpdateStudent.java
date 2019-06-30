@@ -90,7 +90,7 @@ public class UpdateStudent extends AppCompatActivity implements View.OnClickList
 
                         Toast.makeText(getApplicationContext(), "Student Information Updated",Toast.LENGTH_LONG).show();
                         progressBar.setVisibility(View.GONE);
-                        startActivity(new Intent(UpdateStudent.this, StudentList.class));
+
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
